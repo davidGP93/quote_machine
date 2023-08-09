@@ -1,4 +1,4 @@
-import { useEffect, useContext, useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { GeneralContext } from "../context/GeneralContext";
 import { GENERAL_QUOTES } from "../actions/types";
 
@@ -11,13 +11,11 @@ const useData = () => {
       const response = await fetch(API);
       const data = await response.json();
       dispatch({ type: GENERAL_QUOTES, payload: data });
+      return data;
     } catch (error) {
       console.error(`Error fetching data: ${error}`);
     }
   }, [dispatch]);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   return {
     fetchData,

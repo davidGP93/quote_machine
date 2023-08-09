@@ -7,16 +7,19 @@ import { randomNumber, colorNames } from "../utils/random";
 
 export const initialState = {
   quotes: [],
-  currentQuote: { text: "I think therefore I am.", author: "Rene Descartes" },
+  currentQuote: {},
   backGroundColor: "",
 };
 
 const generalReducer = (state = initialState, action) => {
   switch (action.type) {
     case GENERAL_QUOTES:
+      const indexRandom = randomNumber(action.payload);
+      const randomInitialQuote = action.payload[indexRandom];
       return {
         ...state,
         quotes: action.payload,
+        currentQuote: randomInitialQuote,
       };
     case CHANGE_QUOTE:
       let copyQuotes = [...state.quotes];
