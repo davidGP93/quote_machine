@@ -44,7 +44,7 @@ function App() {
     <>
       <section className="app">
         <header style={headerStyle} className="app-header">
-          {state.currentQuote.text ? (
+          {state?.currentQuote?.text ? (
             <>
               <h1>{state.currentQuote.text}</h1>
               <p>
