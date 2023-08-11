@@ -42,22 +42,27 @@ function App() {
 
   return (
     <>
-      <section className="app">
+      <section  className="app">
         <header style={headerStyle} className="app-header">
-          {state?.currentQuote?.text ? (
-            <>
-              <h1>{state.currentQuote.text}</h1>
-              <p>
+          <section className="quote-box">
+            <article className="quote-text">
+              {state?.currentQuote?.text ? (
+                <h1>{state.currentQuote.text}</h1>
+              ) : (
+                <p>Loading ...</p>
+              )}
+            </article>
+            <article className="quote-author">
+              <p>{'- '} 
                 {state.currentQuote.author
                   ? state.currentQuote.author
                   : "Anonimo"}
               </p>
-            </>
-          ) : (
-            <p>Loading ...</p>
-          )}
-
-          <button onClick={handleQuoteChange}>change quote</button>
+            </article>
+            <div className="buttons">
+              <button onClick={handleQuoteChange}>change quote</button>
+            </div>
+          </section>
         </header>
       </section>
     </>
@@ -65,3 +70,4 @@ function App() {
 }
 
 export default App;
+{/* <FontAwesomeIcon icon="fa-solid fa-quote-left" /> */}
